@@ -5,3 +5,75 @@
   border: 1px solid #c3c3c3;
   
 }
+.screen{
+  width: 100%;
+  height: 100px;
+  margin: 0 auto;
+  background-color: #232323;
+  
+  
+}
+.screen h1{
+  color: #ffffff;
+  float: right;
+  padding-right: 20px;
+  padding-top: 10px;
+  font-size: 4rem;
+  font-family: 'Times New Roman', Times, serif;
+}
+.top-buttons{
+  width: 100%;
+  height: 100px;
+  padding: 5px; 
+}
+.keyboard{
+  width: 60px;
+  height: 60px;
+  margin-left: 20px;
+  border: 1px solid #818392;
+  font-family: 'Times New Roman', Times, serif;
+   
+}
+.top-buttons .keyboard h1{
+  color: #859ab6;
+  font-size: 1.5rem;
+}
+.left-buttons{
+  width: 75%;
+  height: 300px;
+  float: left;
+}
+.left-buttons .keyboard{
+  width: 60px;
+  height: 60px;
+  margin-left: 25px;
+  border: 1px solid #818392;   
+}
+.left-buttons .keyboard h1{
+  font-size: 1.5rem;
+  padding-top: 5px;
+}
+.left-buttons .keyboard:nth-child(2){
+  height: 60px;
+  margin-left: 20px;
+  border: 1px solid #818392;
+   
+}
+.left-buttons .keyboard:nth-child(3){
+  height: 60px;
+  margin-left: 20px;
+  border: 1px solid #818392;
+   
+}
+.right-buttons{
+  width: 25%;
+  height: 278px;
+  float: right;
+}
+.right-buttons .keyboard {
+  margin: 0 4px;
+  height: 265px;
+}
+.right-buttons .keyboard h1{
+  font-size: 1.5rem;
+}
