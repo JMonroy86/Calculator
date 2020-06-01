@@ -10,8 +10,6 @@ const getState = ({ getStore, setStore }) => {
                               ...store, ...e
 
                         })
-                        // console.log(store.value)
-                        // console.log(typeof store.value)
                   },
 
             }
