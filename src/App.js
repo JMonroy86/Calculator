@@ -10,7 +10,7 @@ import Calculator from './view/calculator';
 
 function App() {
   return (
-    <Calculator initialValue={123} />
+    <Calculator initialValue={"123"} />
   );
 }
 

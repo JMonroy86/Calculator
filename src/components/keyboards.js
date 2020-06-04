@@ -6,42 +6,61 @@ const opEqual = List.find((item) => item.value === "=")
 const opAC = List.find((item) => item.value === "AC")
 
 const Keyboard = (props) => {
-    // this console.log is used to validate the value that the component recive by the store
-    console.log(props)
-    // keyClass variable is declared as string empty, and this the className that the button of the calculator is going to have
     let keyClass = ""
 
+    // const[value, setValue]=useState("");
     const { store, actions } = useContext(Context);
+    console.log(store.textValue)
 
     const handleClick = () => {
 
-        let val = store.textValue; //this is the value that is in the store
-        let valChar = val.charAt(val.legth - 1)
+        let val = store.textValue;
+        let valChar = val.charAt(val.length - 1)
+        console.log(val.length)
 
-        if (props.item.value === opEqual.value) { //this conditional evalue if the actual value of the key pressed is equal to "="
+        // si el valor que presionaron es un igual y ademas el ultimo elemento que esta en el vizualizador no es un numero no haga la operación
+        if (props.item.value === opEqual.value) {
             if (!List.some((valItem) => valItem.type !== "number" && valItem.value == valChar)) {
                 actions.setValues({ textValue: eval(val).toString() })
-                console.log("soy list", !List.some((valItem) => valItem.type !== "number" && valItem.value == valChar))
+                console.log("soy list",!List.some((valItem) => valItem.type !== "number" && valItem.value == valChar))
                 return;
             }
             else if (props.item.type == "operation") {
                 actions.setValues({ textValue: eval(val.slice(0, -1)).toString() })
-                console.log("i'm operation")
+                console.log("soy operation")
             }
+            // console.log("soy eval")
             return;
         }
-        
+        else if (props.item.value === opAC.value) {
+            // console.log("soy AC")
+            val = val.slice(0, -val.length)
+            actions.setValues({ textValue: val })
+        }
+        else if ((List.some((valItem) => valItem.type == "operation" && valChar == "0") && props.item.value !== ".")) {
+            val = val.slice(0,-1)
+            console.log("soy el agua fria")
+        }
         else if ((List.some((valItem) => valItem.type !== "operation" && valItem.value == valChar) && props.item.type === "operation") || props.item.type == "number") {
-
+            
 
             if (valChar == "0" && props.item.value == "0") {
                 console.log("soy un cero")
                 return;
             }
             val += props.item.value;
-            // console.log("I'm the 2nd if ")
+            // console.log("soy el 2do if ")
         }
-        actions.setValues({ textValue: val })
+        else {
+            val = val.slice(0, -1) + props.item.value
+            console.log("ELSE", val)
+        }
+        // if(List.some((valItem) => valItem.type === "operation" && valItem.value === props.item.value)){
+        //     actions.setValues({ textValue: parseInt(val) })
+        // } 
+
+        actions.setValues({ textValue: val.toString() })
+        console.log("estoy afuera del if", List.some((valItem) => valItem.type === "operation" && valItem.value === props.item.value), valChar)
     }
 
 
