@@ -9,7 +9,8 @@ const Leftbuttons = (props) => {
             <div className="">
 
                 {/* // List has the values that are storage in coponents.js, and this is an array of objects 
-                    // this is mapped to take each separate element represented as "item" and "i" is the key that reactjs needs to identify each child as unique element */}
+                    is filter to take each the elements represented in a new array "item", then the item array is mapped and "i" 
+                    is the key that reactjs needs to identify each child as unique element */}
                 {List.filter(item => item.value == 7 || item.value == 8 || item.value == 9).map((item, i) => (
                     <Keyboard key={i} item={item} />
                 ))}
